@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 exports.bookinstance_list = asyncHandler(async (req, res, next) => {
 	const allBookInstances = await BookInstance.find().populate("book").exec();
 
-	res.render("bookinstance_list", {
+	res.render("book instance/bookinstance_list", {
 		title: "Book Instance List",
 		bookinstance_list: allBookInstances,
 	});
@@ -24,7 +24,7 @@ exports.bookinstance_detail = asyncHandler(async (req, res, next) => {
 		return next(err);
 	}
 
-	res.render("bookinstance_detail", {
+	res.render("book instance/bookinstance_detail", {
 		title: "Book:",
 		bookinstance: bookInstance,
 	});
