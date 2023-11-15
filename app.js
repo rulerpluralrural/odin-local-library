@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const path = require("path")
+const path = require("path");
 const port = process.env.port || 3000;
 
 const indexRouter = require("./routes/index");
@@ -15,6 +15,7 @@ const mongoDB = "mongodb://127.0.0.1:27017/libdb";
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
