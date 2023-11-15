@@ -40,7 +40,7 @@ AuthorSchema.virtual("url").get(function () {
 // 		: "";
 // });
 
-AuthorSchema.virtual("formatted_date").get(function () {
+AuthorSchema.virtual("lifespan").get(function () {
 	return `${
 		this.date_of_birth
 			? DateTime.fromJSDate(this.date_of_birth).toLocaleString(
