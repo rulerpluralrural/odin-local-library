@@ -157,11 +157,6 @@ exports.author_update_get = asyncHandler(async (req, res, next) => {
 	});
 });
 
-// Display Author create form on GET.
-exports.author_create_get = (req, res, next) => {
-	res.render("author/author_form", { title: "Create Author" });
-};
-
 // Handle Author update on POST.
 exports.author_update_post = [
 	// Validate and sanitize fields.
