@@ -146,7 +146,7 @@ exports.author_update_get = asyncHandler(async (req, res, next) => {
 
 	if (author === null) {
 		// No results.
-		const err = new Error("Book not found");
+		const err = new Error("Author not found");
 		err.status = 404;
 		return next(err);
 	}
@@ -207,7 +207,7 @@ exports.author_update_post = [
 		} else {
 			// Data from form is valid. Update the record.
 			const updatedAuthor = await Author.findByIdAndUpdate(req.params.id, author, {});
-			// Redirect to book detail page.
+			// Redirect to author detail page.
 			res.redirect(updatedAuthor.url);
 		}
 	}),
