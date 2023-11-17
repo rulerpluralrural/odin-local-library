@@ -185,7 +185,7 @@ exports.book_delete_post = asyncHandler(async (req, res, next) => {
 		return;
 	} else {
 		// book has no books. Delete object and redirect to the list of books.
-		await Book.findByIdAndDelete(req.body.bookid);
+		await Book.findByIdAndDelete(req.body.book_id);
 		res.redirect("/catalog/books");
 	}
 });

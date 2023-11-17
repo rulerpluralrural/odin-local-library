@@ -135,7 +135,7 @@ exports.author_delete_post = asyncHandler(async (req, res, next) => {
 		return;
 	} else {
 		// Author has no books. Delete object and redirect to the list of authors.
-		await Author.findByIdAndDelete(req.body.authorid);
+		await Author.findByIdAndDelete(req.body.author_id);
 		res.redirect("/catalog/authors");
 	}
 });
