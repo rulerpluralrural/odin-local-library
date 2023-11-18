@@ -1,15 +1,16 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const connectDb  = require("./db");
 const port = process.env.port || 3000;
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog");
 
-const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
-const mongoDB = "mongodb://127.0.0.1:27017/libdb";
+connectDb().catch((err) => {
+	console.log(err)
+})
 
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -20,11 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/catalog", catalogRouter);
-
-main().catch((err) => console.log(err));
-async function main() {
-	await mongoose.connect(mongoDB);
-}
 
 app.listen(port, (err) => {
 	if (err) console.log(err);
